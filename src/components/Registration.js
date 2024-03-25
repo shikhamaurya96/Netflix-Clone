@@ -6,8 +6,7 @@ import { createUserWithEmailAndPassword,updateProfile} from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import {auth} from "./firebase"
 import { addUser } from '../utils/userSlice';
-
- import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
  
 
 const Registration = () => {
@@ -15,40 +14,30 @@ const Registration = () => {
 const[email,setEmail] = useState("");
 const[password,setPassword] = useState("");
 const[userName,setUserName] = useState("");
-
 const[errorMsg,setErrorMessage] = useState("")
-console.log("register")
-
 const navigate = useNavigate();
 
   function handleButton(e){
     e.preventDefault();
   const result= validateForm(email,password);
-  //console.log(result);
   setErrorMessage(result);
   if(result) return;
- 
-  //sign up logic
-    createUserWithEmailAndPassword(auth, email,password)
+  
+  createUserWithEmailAndPassword(auth, email,password)
   .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user; 
+     const user = userCredential.user; 
     updateProfile(user, {
       displayName: userName
     }).then(() => {
-      console.log(auth.currentUser)
+      
       const {email,uid,displayName}=auth.currentUser
       dispatch(addUser({
         email:email,
         userId:uid,
         name:displayName
-      }))
-      
-      // Profile updated!
-      // ...
+      }))   
     }).catch((error) => {
-      // An error occurred
-      // ...
+      
       setErrorMessage(error.message);
     });
   })
@@ -62,7 +51,7 @@ const navigate = useNavigate();
   function login(){
     navigate("/login")
   }
-  console.log("check")
+  
   return (
     <div >
        

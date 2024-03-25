@@ -5,7 +5,7 @@ import useTrailerVideo from '../../hooks/useTrailerVideo';
 const Trailer = ({id}) => {
     useTrailerVideo(id);
     const trailerVideo = useSelector((store)=>store.movies.trailer)
-    console.log(trailerVideo)
+    
      if(trailerVideo===null)return;
   return (
     <div className='h-screen mt-0'>

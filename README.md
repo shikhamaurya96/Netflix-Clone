@@ -10,6 +10,7 @@ For movies browse it consumes movie db API's.
 ![Browse screen](./screenshots/browse-screen.png "Browse Screen")
 ![Movie list-1 screen](./screenshots/browse-movies-1.png "Movie list-1 Screen")
 ![Movie list-2 screen](./screenshots/browse-movies-2.png "Movie list-2 Screen")
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -12,15 +12,16 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './components/firebase';
 import { useDispatch,useSelector } from 'react-redux';
 import {addUser} from "./utils/userSlice"
+
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const selectedMovie = useSelector((store)=>store.movies.selectedMovie)
+  console.log(selectedMovie);
+  
   useEffect(()=>{
    onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("signed in")
-        console.log(user)
         const {email,uid,displayName} = user;
         dispatch(addUser({
           email:email,
@@ -42,8 +43,6 @@ function App() {
    }
   },[selectedMovie])
  
- 
-  console.log("hello")
   
   return <>
   <Routes>

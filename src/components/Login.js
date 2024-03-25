@@ -5,23 +5,20 @@ import { signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from "./firebase"
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { Navigate } from 'react-router-dom';
- import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
  
 
 const Login = () => {
   
 const [email,setEmail]= useState("");
 const [password,setPassword]= useState("");
-
 const[errorMsg,setErrorMessage] = useState("")
-
 const navigate = useNavigate();
 const dispatch = useDispatch()
-  function handleButton(e){
+  
+function handleButton(e){
     e.preventDefault()
   const result= validateForm(email,password);
-  //console.log(result);
   setErrorMessage(result);
   if(result) return;
   
@@ -30,7 +27,7 @@ const dispatch = useDispatch()
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(user);
+    
     const{email,uid,displayName} = user;
     dispatch(addUser({
       email:email,

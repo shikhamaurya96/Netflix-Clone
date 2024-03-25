@@ -17,7 +17,7 @@ const movieInfo = useSelector((store)=>store.movies.nowPlayingMovies)
   const title= movieInfo[2].title;
   const info = movieInfo[2].overview;
   const id = movieInfo[2].id;
-  console.log(user)
+  
  
 
   return (

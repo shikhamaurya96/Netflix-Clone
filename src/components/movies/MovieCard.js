@@ -29,7 +29,9 @@ const MovieCard = ({title,id}) => {
 
     <div className='m-2 flex overflow-x-scroll no-scrollbar'>
       {
-      movies.results.map((movie)=><div className='mr-2 cursor-pointer' key={movie.id} onClick={()=>showMovieData(movie)}><img className="max-w-64" src={imagePoster_URL+movie.poster_path} alt='movie-poster'  width={200} height={200}/></div>)
+      movies.results.map((movie)=><div className='mr-2 cursor-pointer' key={movie.id} onClick={()=>showMovieData(movie)}>
+        <img className="max-w-64" src={imagePoster_URL+movie.poster_path} alt='movie-poster'  width={200} height={200}/>
+        </div>)
     }
     </div>
     </div>

@@ -12,13 +12,14 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './components/firebase';
 import { useDispatch,useSelector } from 'react-redux';
 import {addUser} from "./utils/userSlice"
+import TrailorVideo from './components/movies/TrailorVideo';
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const selectedMovie = useSelector((store)=>store.movies.selectedMovie)
   console.log(selectedMovie);
-  
+
   useEffect(()=>{
    onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -51,7 +52,7 @@ function App() {
          <Route path='movieDescription' element={<MovieDescription movie = {selectedMovie}/>}/>
          <Route path='/register' element={<Registration/>}/>
          <Route path='/loader' element={<Loader/>}/>
-         
+         <Route path='/trailorVideo' element={<TrailorVideo/>}/>
   </Routes>
      </> 
 }
